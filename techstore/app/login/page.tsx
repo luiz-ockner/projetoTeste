@@ -1,13 +1,18 @@
 "use client";
 import { useState } from "react";
+import { signIn } from "next-auth/react";
 
 export default function LoginPage() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    function handleLogin(e: React.FormEvent) {
+    async function handleLogin(e: React.FormEvent) {
         e.preventDefault();
-        alert(`Login com ${email} (fictício)`)
+        await signIn("credentials",{
+            email,
+            password,
+            callbackUrl: "/"
+        });
     }
 
     return (
@@ -23,7 +28,6 @@ export default function LoginPage() {
                     placeholder="Email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-
                 />
                 <input
                     className="border border-gray-300 p-2 mb-4 w-full"

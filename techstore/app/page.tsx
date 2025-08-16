@@ -17,7 +17,7 @@ export default function Home() {
   return (
     
     <div className="p-4 grid grid-cols-3 gap-4">
-      {data.map((prod: any) => (
+      {data.map((prod: { id: string | number; name: string }) => (
         <Link key={prod.id} href={`/products/${prod.id}`}>
           <h2 className="text-lg font-bold hover:underline">{prod.name}</h2>
         </Link>
