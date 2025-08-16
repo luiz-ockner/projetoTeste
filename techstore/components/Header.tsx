@@ -1,9 +1,17 @@
 "use client";
 import Link from "next/link";
 import { useSession, signOut } from "next-auth/react";
+import { useCartStore } from "@/store/cartStore";
+import { useEffect } from "react";
+
 
 export default function Header() {
     const { data: session } = useSession();
+    const setUser = useCartStore((state) => state.setUser);
+
+    useEffect(() => {
+        setUser(session?.user?.email || null);
+    }, [session, setUser]);
 
     return (
         <header className="bg-gray-800 text-white p-4 flex justify-between">

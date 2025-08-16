@@ -1,8 +1,7 @@
 "use client";
 import { useQuery } from "@tanstack/react-query";
 import Link from "next/link";
-import Header from "@/components/Header";
-import { ReactQueryProvider } from "@/lib/react-query";
+// ...existing code...
 
 export default function Home() {
   const { data, isLoading, error } = useQuery({

@@ -1,8 +1,15 @@
 "use client";
 import { useCartStore } from "@/store/cartStore";
 
+
 export default function CartPage() {
-    const { items, removeFromCart } = useCartStore();
+    const items = useCartStore((state) => state.items);
+    const removeFromCart = useCartStore((state) => state.removeFromCart);
+    const user = useCartStore((state) => state.user);
+
+    if (user === null) {
+        return <div className="p-6">Carregando carrinho...</div>;
+    }
 
     return (
         <div className="p-6">
