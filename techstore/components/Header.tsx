@@ -21,6 +21,7 @@ export default function Header() {
                 <Link href="/cart">Carrinho</Link>
                 {session ? (
                     <>
+                        <Link href="/profile">Perfil</Link>
                         <span>{session.user?.name}</span>
                         <button onClick={() => signOut()} className="text-red-300">Sair</button>
                     </>
